@@ -1,0 +1,41 @@
+{
+  "id": "com.goplaychat.playchat",
+  "version": "0.0.1",
+  "version_code": 1,
+  "name": "Playchat",
+  "short_name": "Playchat",
+  "short_description": "Play games and challenge your friends",
+  "description": "Play games and challenge your friends",
+  "start_url": "index.html",
+  "type": "app",
+  "category": "social",
+  "icons": [
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    }
+  ],
+  "author": {
+    "name": "Jean-Michel Saulnier",
+    "email": "goplaychat@gmail.com",
+    "website": "https://www.goplaychat.com"
+  },
+  "default_locale": "en",
+  "plugins": [
+    "Device",
+    "SplashScreen",
+    "NetworkStatus"
+  ],
+  "urls": [
+    
+  ],
+  "background_color": "#4e8ef7",
+  "theme_display": "show",
+  "theme_color": "#4e8ef7"
+}
