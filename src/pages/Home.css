@@ -4,9 +4,17 @@
   --background: #b4242c;
 }
 
+.close {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffffff;
+}
+
 .content {
   position: absolute;
-  bottom: 20px;
+  bottom: 40px;
   text-align: center;
   width: 100%;
   margin: 0 auto;

@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 
 import Lottie from 'react-lottie';
+import { closeCircle } from 'ionicons/icons';
 
 import {
+  IonTitle,
   IonContent,
-  IonButton
+  IonIcon
 } from "@ionic/react";
 
 import './Home.css';
@@ -42,11 +44,12 @@ export const HomePage = ({ history }: any) => {
   <>
     <IonContent className="background" fullscreen>
       <Lottie options={defaultOptions} height="100%" width="100%" />
+      <div className="close" onClick={(event) => { event.preventDefault(); appManager.close()}}>
+        <IonIcon icon={closeCircle} size="large" />
+      </div>
     </IonContent>
     <div className="content">
-      <IonButton  strong size="large" color="danger" class="ion-text-uppercase" onClick={(e) => { e.preventDefault(); appManager.close()}}>
-        Coming soon
-      </IonButton>
+      <IonTitle color="danger">Coming soon...</IonTitle>              
     </div>
   </>
   );
