@@ -4,8 +4,7 @@ import Lottie from 'react-lottie';
 
 import {
   IonContent,
-  IonButton,
-  IonFooter
+  IonButton
 } from "@ionic/react";
 
 import './Home.css';
