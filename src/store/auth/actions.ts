@@ -11,23 +11,22 @@ import { AppState } from "../";
 
 const { Storage } = Plugins;
 
- export const login = (callback: any = noop): ThunkAction<
+ export const login = (user: any, callback: any = noop): ThunkAction<
     void,
     AppState,
     null,
     AuthActionTypes
 > => dispatch => {
     (async function(){
-        await Storage.set({ key: 'isSignIn', value: 'true' })
-        const storage = await Storage.get({ key: 'isSignIn' })
-        console.log('storage', storage)
-        dispatch(loginSuccess());
+        await Storage.set({ key: 'user', value: JSON.stringify(user)})
+        dispatch(loginSuccess(user));
         callback();
     })()
 };
   
-export const loginSuccess = (): AuthActionTypes => ({
-    type: LOGIN_SUCCESS
+export const loginSuccess = (user: any): AuthActionTypes => ({
+    type: LOGIN_SUCCESS,
+    payload: user
 });
 
 export const logout = (callback: any = noop): ThunkAction<
@@ -38,8 +37,6 @@ export const logout = (callback: any = noop): ThunkAction<
 > => dispatch => {
     (async function(){
         await Storage.clear()
-        const storage = await Storage.get({ key: 'isSignIn' })
-        console.log('storage', storage)
         dispatch(logoutSuccess());
         callback()
     })()
@@ -56,10 +53,11 @@ export const authCheckStatus = (callback: any = noop): ThunkAction<
     AuthActionTypes
   > => dispatch => {
     (async function(){
-        const user = await Storage.get({ key: 'isSignIn' })
+        const user = await Storage.get({ key: 'user' })
+
         if (user && user.value) {
-            console.log('user', user)
-            dispatch(loginSuccess());
+            // TOOD is user credential expired ?
+            dispatch(loginSuccess(JSON.parse(user.value)));
             callback()
           }
     })()

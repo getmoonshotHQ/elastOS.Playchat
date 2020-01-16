@@ -27,8 +27,10 @@ export const LoginPage = ({ history }: any) => {
   const dispatch = useDispatch()
 
   const [signIn] = useSignIn((credentials:any) => { 
-    dispatch(login(() => goTo('/dashboard')))
-    console.log('credentials', credentials)
+    if(credentials.length) {
+      const user = credentials[0].credentialSubject
+      dispatch(login(user, () => goTo('/dashboard')))
+    }
    })
  
   const goTo = useCallback(
