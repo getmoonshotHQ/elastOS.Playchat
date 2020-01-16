@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+.close {
+  display: flex;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: #ffffff;
+}

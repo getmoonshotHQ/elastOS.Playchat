@@ -1,7 +1,7 @@
 {
   "id": "com.goplaychat.playchat",
-  "version": "0.0.1",
-  "version_code": 1,
+  "version": "0.0.2",
+  "version_code": 2,
   "name": "Playchat",
   "short_name": "Playchat",
   "short_description": "Play games and challenge your friends",
