@@ -10,7 +10,7 @@ import {
   IonLabel
 } from "@ionic/react";
 
-import { useSignIn } from '../hooks/useSignIn'
+import { useDID } from '../hooks/useDID'
 import { login, authCheckStatus } from '../store/auth'
 
 import './Login.css';
@@ -26,7 +26,7 @@ declare let appManager: AppManagerPlugin.AppManager;
 export const LoginPage = ({ history }: any) => {
   const dispatch = useDispatch()
 
-  const [signIn] = useSignIn((credentials:any) => { 
+  const [signIn] = useDID((credentials:any) => { 
     if(credentials.length) {
       const user = credentials[0].credentialSubject
       dispatch(login(user, () => goTo('/dashboard')))

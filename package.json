@@ -1,6 +1,6 @@
 {
   "name": "elastos-playchat",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
     "@capacitor/core": "1.4.0",

@@ -1,7 +1,7 @@
 declare let appManager: AppManagerPlugin.AppManager;
 declare let didManager: DIDPlugin.DIDManager;
 
-export function useSignIn(optionalCallback: any = noop) {
+export function useDID(optionalCallback: any = noop) {
   const signIn = (claims: any) => {
     /**
      * Request some credentials to the DID application.
