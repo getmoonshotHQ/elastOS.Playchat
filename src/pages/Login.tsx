@@ -54,7 +54,7 @@ export const LoginPage = ({ history }: any) => {
     return () => {
       document.removeEventListener('deviceready', onDeviceReady);
     };
-  }, []);
+  }, [onDeviceReady]);
 
   const defaultOptions = {
     loop: true,
@@ -76,7 +76,7 @@ export const LoginPage = ({ history }: any) => {
     <div className="content">
       <IonButton size="large" color="warning" onClick={() => { signIn({ name: true })}}>
         <IonLabel color="dark">
-          Sign in
+          <IonIcon src="/assets/did-icon.svg" /> Sign in with DID
         </IonLabel>
       </IonButton>          
     </div>

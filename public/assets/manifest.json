@@ -30,11 +30,14 @@
   "plugins": [
     "Device",
     "SplashScreen",
-    "NetworkStatus"
+    "DIDPlugin",
+    "CarrierPlugin",
+    "NetworkStatus",
+    "QRScanner",
+    "Clipboard",
+    "File"
   ],
-  "urls": [
-    
-  ],
+  "urls": [],
   "background_color": "#4e8ef7",
   "theme_display": "show",
   "theme_color": "#4e8ef7"

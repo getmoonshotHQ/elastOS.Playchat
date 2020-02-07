@@ -36,6 +36,11 @@ export const DashboardPage = ({ history }: any) => {
       </div>
     </IonContent>
     <div className="content">
+      <IonButton size="large" color="warning" onClick={() => { history.push('/game', { direction: 'forward' }) }}>
+          <IonLabel color="dark">
+            Logout
+          </IonLabel>
+      </IonButton>   
       <IonTitle>{user && user.id}</IonTitle>
       <IonTitle>{user && user.name}</IonTitle> 
         <IonButton size="large" color="warning" onClick={() => { dispatch(logout(() => history.push('/', { direction: 'forward' })))}}>
