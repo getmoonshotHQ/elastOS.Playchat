@@ -4,7 +4,96 @@ import * as pc from "playcanvas"
 
 import './Game3d.css';
 
+
+let app:any = null
+let devices:any = null
+let $canvas:HTMLCanvasElement|null = null
+
 export const Game3dPage = ({ history }: any) => {
+
+  useEffect(() => {
+
+    $canvas = document.getElementById('game') as HTMLCanvasElement;
+
+    const createInputDevices = (canvas:HTMLCanvasElement) =>  {
+      var devices = {
+          elementInput: new pc.ElementInput(canvas, {
+              useMouse: false,
+              useTouch: true
+          }),
+          keyboard: null,
+          mouse: null,
+          gamepads: null,
+          touch: new pc.TouchDevice(canvas)
+      };
+  
+      return devices;
+  };
+
+
+    devices = createInputDevices($canvas);
+
+    try {
+      app = new pc.Application($canvas, {
+        elementInput: devices.elementInput,
+        keyboard: devices.keyboard,
+        mouse: devices.mouse,
+        gamepads: devices.gamepads,
+        touch: devices.touch,
+        graphicsDeviceOptions: {
+          'antialias': true,
+          'alpha': false,
+          'preserveDrawingBuffer': false,
+          'preferWebGl2': true
+        },
+        assetPrefix: "",
+        scriptPrefix: "",
+      });
+    } catch (err) {
+        console.log('error', err)
+
+        return;
+    }
+    
+
+    const configure = () => {
+      app.configure("assets/game/export/config.json", (err:any) => {
+          if (err) {
+              console.error(err);
+          }
+
+          // configureCss(app._fillMode, app._width, app._height);
+
+          // do the first reflow after a timeout because of
+          // iOS showing a squished iframe sometimes
+          setTimeout(function () {
+              //reflow();
+
+              //window.addEventListener('resize', reflow, false);
+              //window.addEventListener('orientationchange', reflow, false);
+
+              app.preload(function (err:any) {
+                  if (err) {
+                      console.error(err);
+                  }
+
+                  app.loadScene("assets/game/export/876493.json", (err:any, scene:any) => {
+                      if (err) {
+                          console.error(err);
+                      }
+
+                      app.start();
+                  });
+              });
+          });
+      });
+  };
+
+  configure();
+
+  }, []);
+
+  /** 
 
   useEffect(() => {
     
@@ -43,45 +132,64 @@ export const Game3dPage = ({ history }: any) => {
   });
   app.root.addChild(screen);
 
-  // Create a simple button
-  var button = new pc.Entity();
-  button.addComponent("button", {
-      imageEntity: button
+  /*pp.on("update", function (dt) {
+    console.log("update")
+    //if (camera.camera)
+      //camera.camera!.clearColor = new pc.Color(Math.random(), Math.random(), Math.random());
   });
-  button.addComponent("element", {
-      anchor: [ 0.5, 0.5, 0.5, 0.5 ],
-      height: 40,
-      pivot: [ 0.5, 0.5 ],
-      type: pc.ELEMENTTYPE_IMAGE,
-      width: 175,
-      useInput: true
-  });
-  screen.addChild(button);
+  app.scene.ambientLight = new pc.Color(0.2, 0.2, 0.2);
 
-  // Create a label for the button
-  var label = new pc.Entity();
-  label.addComponent("element", {
-      anchor: [ 0.5, 0.5, 0.5, 0.5 ],
-      color: new pc.Color(0, 0, 0),
-      fontSize: 32,
-      height: 64,
-      pivot: [ 0.5, 0.5 ],
-      text: "CLICK ME",
-      type: pc.ELEMENTTYPE_TEXT,
-      width: 128,
-      wrapLines: true
-  });
-  button.addChild(label);
-
-  // Change the background color every time the button is clicked
-      //@ts-ignore: Unreachable code error
-  button.button.on('click', function (e) {
-    //@ts-ignore: Unreachable code error
-      camera.camera.clearColor = new pc.Color(Math.random(), Math.random(), Math.random());
+  // Create a Entity with a Box model component
+  var box = new pc.Entity();
+  box.addComponent("model", {
+      type: "box",
   });
 
+  // Create an Entity with a point light component and a sphere model component.
+  var light = new pc.Entity();
+  light.addComponent("light", {
+      type: "point",
+      color: new pc.Color(1, 0, 0),
+      radius: 10
+  });
+  light.addComponent("model", {
+      type: "sphere"
+  });
+  // Scale the sphere down to 0.1m
+  light.setLocalScale(0.1, 0.1, 0.1);
+
+  // Create an Entity with a camera component
+  var camera = new pc.Entity();
+  camera.addComponent("camera", {
+      clearColor: new pc.Color(0.4, 0.45, 0.5)
+  });
+
+  // Add the new Entities to the hierarchy
+  app.root.addChild(box);
+  app.root.addChild(light);
+  app.root.addChild(camera);
+
+  // Move the camera 10m along the z-axis
+  camera.translate(0, 0, 10);
+
+  // Set an update function on the app's update event
+  var angle = 0;
+  app.on("update", function (dt) {
+      angle += dt;
+      if (angle > 360) {
+          angle = 0;
+      }
+
+      // Move the light in a circle
+      light.setLocalPosition(3 * Math.sin(angle), 0, 3 * Math.cos(angle));
+
+      // Rotate the box
+      box.setEulerAngles(angle*2, angle*4, angle*8);
+  });
 
   }, []);
+
+  */
 
   return (
     <canvas id="game"></canvas>
