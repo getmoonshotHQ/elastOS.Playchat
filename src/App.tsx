@@ -5,10 +5,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 
-import { LoginPage } from './pages/Login';
+import { LoginPage } from './pages/Login'
 import { DashboardPage } from './pages/Dashboard'
-
-
+import { GamePage } from './pages/Game'
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
@@ -35,6 +34,7 @@ const App: React.FC = () => {
       <IonReactRouter>
         <Route exact path="/" component={LoginPage} />
         <Route exact path="/dashboard" component={DashboardPage} />
+        <Route exact path="/game" component={GamePage} /> 
       </IonReactRouter>
     </IonApp>
   )

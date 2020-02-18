@@ -16,6 +16,8 @@
     "@types/react-redux": "^7.1.5",
     "@types/react-router": "^5.1.1",
     "@types/react-router-dom": "^5.1.0",
+    "phaser": "^3.22.0",
+    "playcanvas": "^1.24.6",
     "ionicons": "^5.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
