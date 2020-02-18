@@ -13,16 +13,18 @@ export const Game3dPage = ({ history }: any) => {
 
   useEffect(() => {
 
+    window.pc = pc
+
     $canvas = document.getElementById('game') as HTMLCanvasElement;
 
     const createInputDevices = (canvas:HTMLCanvasElement) =>  {
       var devices = {
           elementInput: new pc.ElementInput(canvas, {
-              useMouse: false,
-              useTouch: true
+            useMouse: true,
+            useTouch: true
           }),
-          keyboard: null,
-          mouse: null,
+          keyboard: new pc.Keyboard(window),
+          mouse: new pc.Mouse(canvas),
           gamepads: null,
           touch: new pc.TouchDevice(canvas)
       };
@@ -48,6 +50,7 @@ export const Game3dPage = ({ history }: any) => {
         },
         assetPrefix: "",
         scriptPrefix: "",
+        scriptsOrder: [ '21399972', '21399876', '4554207', '4554213', '4554214', '4554217', '4554219', '4554270', '4554271', '4554273', '4554276', '4554277', '4554279', '4831197', '20754603', '20755574' ]
       });
     } catch (err) {
         console.log('error', err)
@@ -57,7 +60,7 @@ export const Game3dPage = ({ history }: any) => {
     
 
     const configure = () => {
-      app.configure("assets/game/export/config.json", (err:any) => {
+      app.configure("assets/game/flappy-bird/config.json", (err:any) => {
           if (err) {
               console.error(err);
           }
@@ -77,7 +80,7 @@ export const Game3dPage = ({ history }: any) => {
                       console.error(err);
                   }
 
-                  app.loadScene("assets/game/export/876493.json", (err:any, scene:any) => {
+                  app.loadScene("assets/game/flappy-bird/404993.json", (err:any, scene:any) => {
                       if (err) {
                           console.error(err);
                       }
