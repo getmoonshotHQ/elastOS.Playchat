@@ -117,7 +117,7 @@ const reflow = () => {
                       console.error(err);
                   }
 
-                  app.loadScene("assets/game/flappy-bird/404993.json", (err:any, scene:any) => {
+                  app.loadScene("assets/game/flappy-bird/877575.json", (err:any, scene:any) => {
                       if (err) {
                           console.error(err);
                       }
