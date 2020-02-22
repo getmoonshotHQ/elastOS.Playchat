@@ -123,6 +123,10 @@ const reflow = () => {
                       }
 
                       app.start();
+
+                      app.on('game:exit', () => {
+                        history.push('/dashboard', { direction: 'forward' });
+                      })
                   });
               });
           });
