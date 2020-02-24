@@ -12,8 +12,6 @@ export const GamePage = ({ history }: any) => {
 
   useEffect(() => {
 
-    window.pc = pc
-
     $canvas = document.getElementById('application-canvas') as HTMLCanvasElement;
 
     const createInputDevices = (canvas:HTMLCanvasElement) =>  {
@@ -125,6 +123,7 @@ const reflow = () => {
                       app.start();
 
                       app.on('game:exit', () => {
+                        app.destroy();
                         history.push('/dashboard', { direction: 'forward' });
                       })
                   });
