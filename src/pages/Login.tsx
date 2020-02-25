@@ -1,7 +1,6 @@
 import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux'
 import Lottie from 'react-lottie';
-import { closeCircle } from 'ionicons/icons';
 
 import {
   IonContent,
@@ -20,8 +19,6 @@ declare global{
       cordova : any
   }
 }
-
-declare let appManager: AppManagerPlugin.AppManager; 
 
 export const LoginPage = ({ history }: any) => {
   const dispatch = useDispatch()
@@ -67,16 +64,14 @@ export const LoginPage = ({ history }: any) => {
 
   return (
   <>
+    <img src="/assets/images/playchat.png" alt="playchat" className="playchat" />
     <IonContent className="background" fullscreen>
       <Lottie options={defaultOptions} height="100%" width="100%" />
-      <div className="close" onClick={() => { appManager.close()}}>
-        <IonIcon icon={closeCircle} size="large" />
-      </div>
     </IonContent>
     <div className="content">
       <IonButton size="large" color="warning" onClick={() => { signIn({ name: true })}}>
         <IonLabel color="dark">
-          <IonIcon src="/assets/did-icon.svg" /> Sign in with DID
+          <IonIcon src="/assets/did-icon.svg" className="icon" /> Sign in with DID
         </IonLabel>
       </IonButton>          
     </div>
