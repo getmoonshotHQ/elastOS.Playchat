@@ -64,7 +64,7 @@ export const LoginPage = ({ history }: any) => {
 
   return (
   <>
-    <img src="/assets/images/playchat.png" alt="playchat" className="playchat" />
+    <img src="/assets/images/playchat.png" alt="playchat" className="playchat2" />
     <IonContent className="background" fullscreen>
       <Lottie options={defaultOptions} height="100%" width="100%" />
     </IonContent>

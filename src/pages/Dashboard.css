@@ -1,9 +1,48 @@
 @charset "UTF-8";
 
-.close {
-  display: flex;
+.background2 {
+  --background: #222;
+}
+
+.playchat {
   position: absolute;
-  top: 20px;
-  right: 20px;
-  color: #ffffff;
+  top: 10px;
+  z-index: 1;
+  left: 0;
+  width: 35%;
+  left: 32.5%;
+  height: auto;
+}
+
+.container {
+  margin-top: 20%;
+}
+
+.container-center {
+  text-align: center;
+}
+
+.grid {
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+.title {
+  font-size: 1em;
+  margin-left: 10px;
+  color: aliceblue;
+  margin-bottom: 0;
+}
+
+.tabs {
+  font-size: 26px;
+  display: flex;
+  height: 50px;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+  background-color: #eee;
+  border-top: 1px solid #ddd;
 }
